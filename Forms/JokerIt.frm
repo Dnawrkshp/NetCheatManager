@@ -8,8 +8,8 @@ Begin VB.Form JokerIt
    Icon            =   "JokerIt.frx":0000
    LinkTopic       =   "Form1"
    Picture         =   "JokerIt.frx":08CA
-   ScaleHeight     =   10950
-   ScaleWidth      =   20250
+   ScaleHeight     =   5865
+   ScaleWidth      =   8595
    Begin VB.CheckBox RmvFmt 
       BackColor       =   &H00242410&
       Caption         =   "Remove Comments"
@@ -405,7 +405,7 @@ JokLab.ForeColor = &HC0C000
 End Sub
 
 Private Sub InsLab_Click()
-SendButt.CodeWindow.Text = SendButt.CodeWindow.Text & vbCrLf & Jokered.Text
+SendButt.CodeWindow.Text = SendButt.CodeWindow.Text & Jokered.Text
 End Sub
 
 Private Sub InsLab_MouseMove(Button As Integer, Shift As Integer, X As Single, Y As Single)
@@ -479,11 +479,6 @@ End Sub
 
 Private Sub Width_Click(Index As Integer)
 WidthSel = Index
-If Index = 2 Then
-    TypeCombo.Visible = False
-Else
-    TypeCombo.Visible = True
-End If
 End Sub
 
 Function GetJokVal()
@@ -499,7 +494,7 @@ Function GetJokVal()
     Next X
     
     X = BinToDec(temp)
-    X = -1 - X
-    GetJokVal = Hex(X)
+    If TypeCombo.ListIndex < 4 Then: X = -1 - X
+    GetJokVal = Pad(Hex(X), 4)
 End Function
 
