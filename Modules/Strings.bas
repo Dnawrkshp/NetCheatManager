@@ -14,6 +14,22 @@ Dim I         As Long
     StrToHex = strReturn
 End Function
 
+'Written by Dnawrkshp
+Function FileOf(File As String)
+Dim X As Long
+X = Len(File) - InStrRev(File, "/")
+If X = 0 Or X = Len(File) Then: FileOf = "": Exit Function
+FileOf = Right(File, X)
+End Function
+
+'Written by Dnawrkshp
+Function DirOf(File As String)
+Dim X As Long
+X = Len(File) - InStrRev(File, "/")
+If X = 0 Or X = Len(File) Then: DirOf = "": Exit Function
+DirOf = Left(File, Len(File) - X)
+End Function
+
 'Written by ORCXodus
 Function HexToString(ByVal HexToStr As String) As String
 Dim strTemp   As String

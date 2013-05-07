@@ -257,7 +257,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Bootule_Click()
 If WSock1.State = 7 Then
-    Send "3"
+    Send HexToString("4")
     Delay 1
     Send uleBox.Text
     SaveSett 1
@@ -295,7 +295,7 @@ End Sub
 
 Private Sub DisconnectBtn_Click()
 If WSock1.State = 7 Then
-    Send "1"
+    Send HexToString("2")
     WSock1.Close
 Else
     WSock1.Close
@@ -352,7 +352,7 @@ End Sub
 
 Private Sub SendButt_Click()
     Dim Size As String, GetString As String, Codes As String, Old As String, tempArr() As String, MastCodeLine As Long
-    Dim GetByte As Integer
+    Dim GetByte As Integer, RetSend As Integer
     
     If WSock1.State = 7 Then
     
@@ -376,15 +376,16 @@ Private Sub SendButt_Click()
 '        Next X
 '    Close #2
     
-    Log "Sending " & Trim(Str(Size / 8)) & " lines of code"
+    Log "Sending " & Trim(str(Size / 8)) & " lines of code"
     
-    SendWait "2", "Send em!"
+    SendRet = SendWait(HexToString("3"), "K")
     
-    SendWait Size, "K"
+    SendRet = SendWait(Size, "K")
     
-    SendWait Codes, "Recieved codes!", 1
+    SendRet = SendWait(Codes, "", 1)
     
-    Send "Okay"
+    'Delay 5
+    'Send "K"
     
     Else
         MsgBox "Not Connected!"
@@ -397,9 +398,10 @@ SendButt.ForeColor = &HFFFF00
 End Sub
 
 Private Sub StartGame_Click()
+    Dim SendRet As Integer
     
     If WSock1.State = 7 Then
-        SendWait "0", "", 1
+        SendRet = SendWait(HexToString("1"), "", 1)
         WSock1.Close
     Else
         MsgBox "Please connect to the PS2 first!"
@@ -411,8 +413,10 @@ StartGame.ForeColor = &HFFFF00
 End Sub
 
 Private Sub StopDisc_Click()
+Dim SendRet As Integer
+
 If WSock1.State = 7 Then
-    SendWait "4", "K"
+    SendRet = SendWait(HexToString("5"), "K")
 Else
     MsgBox "Not Connected!"
 End If

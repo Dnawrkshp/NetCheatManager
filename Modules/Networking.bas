@@ -13,9 +13,9 @@ Const SUCCESS  As Integer = 1
 Sub ConToPS2(IP As String)
     Dim Timer As Long
     
-    If IP = "" Then: Log "Please enter an IP Address!": Exit Sub
+    If IP = "" Then: SendButt.Log "Please enter an IP Address!": Exit Sub
     
-    If SendButt.WSock1.State = 7 Then: Log "Already connected": Exit Sub
+    If SendButt.WSock1.State = 7 Then: SendButt.Log "Already connected": Exit Sub
     
     SendButt.WSock1.Close
     SendButt.WSock1.RemoteHost = IP
@@ -27,7 +27,7 @@ Sub ConToPS2(IP As String)
         Do While SendButt.WSock1.State = 6
             DoEvents
             Timer = Timer + 1
-            If Timer > 4000000 Then: Log "Connection timeout": SendButt.WSock1.Close: Exit Sub
+            If Timer > 4000000 Then: SendButt.Log "Connection timeout": SendButt.WSock1.Close: Exit Sub
         Loop
         If SendButt.WSock1.State = 7 Then
             SendButt.Log "Connected!"
@@ -73,12 +73,16 @@ Function WaitForReply(Old As String)
     Dim temp As String
     SendButt.WSock1.GetData (temp)
     While temp <> Old
+        
+        Delay 1
         SendButt.WSock1.GetData (temp)
         DoEvents
     Wend
 End Function
 
-Sub SendWait(Send As String, Wait As String, Optional Mode As Integer)
+Function SendWait(Send As String, Wait As String, Optional Mode As Integer)
+    If SendButt.WSock1.State <> 7 Then: Exit Function
+    
     Dim temp As String
     SendButt.WSock1.SendData Send
     
@@ -88,16 +92,19 @@ Sub SendWait(Send As String, Wait As String, Optional Mode As Integer)
     
     SendC = False
     
+    'Delay 1
     SendButt.WSock1.GetData temp
     If Wait <> "" Then
-        temp = Left(temp, Len(Wait))
-        Do While temp <> Wait
+        'temp = Left(temp, Len(Wait))
+        Do While InStr(1, temp, Wait) = 0 'temp <> Wait 'Wait for specific response
+            
             Delay 1
+            If SendButt.WSock1.State <> 7 Then: Exit Function
             SendButt.WSock1.GetData temp
-            temp = Left(temp, Len(Wait))
+            'temp = Left(temp, Len(Wait))
         Loop
     Else
-        Do While temp = Wait
+        Do While temp = Wait 'Wait for any respone
             Delay 1
             SendButt.WSock1.GetData temp
         Loop
@@ -107,7 +114,43 @@ Sub SendWait(Send As String, Wait As String, Optional Mode As Integer)
     
     Delay 1000 'Delay. The PS2 lags behind otherwise...
     
-End Sub
+End Function
+
+Function SendArrayWait(Send() As String, Wait As String, Size As Long, Optional Mode As Integer)
+    If SendButt.WSock1.State <> 7 Then: Exit Function
+    
+    Dim temp As String, X As Long
+    
+    For X = 0 To Size
+        SendButt.WSock1.SendData Send(X)
+        While Not SendC
+            DoEvents
+        Wend
+        SendC = False
+    Next X
+    
+    SendButt.WSock1.GetData temp
+    If Wait <> "" Then
+        'temp = Left(temp, Len(Wait))
+        Do While InStr(1, temp, Wait) = 0 'Wait for specific response
+            
+            Delay 1
+            SendButt.WSock1.GetData temp
+            'temp = Left(temp, Len(Wait))
+        Loop
+    Else
+        Do While temp = "" 'Wait for any respone
+            
+            If SendButt.WSock1.State <> 7 Then: Exit Function
+            Delay 1
+            SendButt.WSock1.GetData temp
+        Loop
+    End If
+    
+    If Mode = 1 Then: SendButt.Log temp
+    
+    Delay 1000 'Delay. The PS2 lags behind otherwise...
+End Function
 
 Sub Send(Send As String)
     SendButt.WSock1.SendData Send
