@@ -243,7 +243,7 @@ Begin VB.Form SendButt
    Begin VB.Menu ToolBox 
       Caption         =   "Tools"
       Begin VB.Menu JokerTB 
-         Caption         =   "Joker It"
+         Caption         =   "Joker That"
       End
       Begin VB.Menu mnu_cbc 
          Caption         =   "CBCImport"
