@@ -335,7 +335,7 @@ WSock1.Close
 End Sub
 
 Private Sub JokerTB_Click()
-    JokerIt.Show
+    JokerThat.Show
 End Sub
 
 Private Sub LogClear_Click()
@@ -376,7 +376,7 @@ Private Sub SendButt_Click()
 '        Next X
 '    Close #2
     
-    Log "Sending " & Trim(str(Size / 8)) & " lines of code"
+    Log "Sending " & Trim(Str(Size / 8)) & " lines of code"
     
     SendRet = SendWait(HexToString("3"), "K")
     

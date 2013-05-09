@@ -1,13 +1,13 @@
 VERSION 5.00
-Begin VB.Form JokerIt 
-   Caption         =   "Joker It by Dnawrkshp - Based off of Joker It! by Rathlar"
+Begin VB.Form JokerThat 
+   Caption         =   "Joker That by Dnawrkshp - Based off of Joker It! by Rathlar"
    ClientHeight    =   5865
    ClientLeft      =   210
    ClientTop       =   3105
    ClientWidth     =   8595
-   Icon            =   "JokerIt.frx":0000
+   Icon            =   "JokerThat.frx":0000
    LinkTopic       =   "Form1"
-   Picture         =   "JokerIt.frx":08CA
+   Picture         =   "JokerThat.frx":08CA
    ScaleHeight     =   5865
    ScaleWidth      =   8595
    Begin VB.CheckBox RmvFmt 
@@ -47,9 +47,9 @@ Begin VB.Form JokerIt
       BackColor       =   &H00000000&
       ForeColor       =   &H00FFFF00&
       Height          =   315
-      ItemData        =   "JokerIt.frx":A5A14
+      ItemData        =   "JokerThat.frx":A5A14
       Left            =   3120
-      List            =   "JokerIt.frx":A5A16
+      List            =   "JokerThat.frx":A5A16
       TabIndex        =   20
       Text            =   "Equal"
       Top             =   4560
@@ -82,7 +82,7 @@ Begin VB.Form JokerIt
       Left            =   120
       MultiLine       =   -1  'True
       TabIndex        =   17
-      Text            =   "JokerIt.frx":A5A18
+      Text            =   "JokerThat.frx":A5A18
       Top             =   840
       Width           =   2895
    End
@@ -171,23 +171,23 @@ Begin VB.Form JokerIt
       Width           =   1095
    End
    Begin VB.CheckBox BCheck 
-      BackColor       =   &H00A8A13C&
+      BackColor       =   &H00B8BB41&
       Caption         =   "Left"
       Height          =   255
       Index           =   7
       Left            =   4440
       TabIndex        =   7
-      Top             =   1860
+      Top             =   1440
       Width           =   1095
    End
    Begin VB.CheckBox BCheck 
-      BackColor       =   &H00A8A13C&
+      BackColor       =   &H00CACD47&
       Caption         =   "Down"
       Height          =   255
       Index           =   6
-      Left            =   3120
+      Left            =   4440
       TabIndex        =   6
-      Top             =   1860
+      Top             =   960
       Width           =   1095
    End
    Begin VB.CheckBox BCheck 
@@ -195,49 +195,49 @@ Begin VB.Form JokerIt
       Caption         =   "Right"
       Height          =   255
       Index           =   5
-      Left            =   4440
+      Left            =   3120
       TabIndex        =   5
-      Top             =   1380
+      Top             =   1440
       Width           =   1095
    End
    Begin VB.CheckBox BCheck 
-      BackColor       =   &H00B8BB41&
+      BackColor       =   &H00CACD47&
       Caption         =   "Up"
       Height          =   255
       Index           =   4
       Left            =   3120
       TabIndex        =   4
-      Top             =   1380
-      Width           =   1095
-   End
-   Begin VB.CheckBox BCheck 
-      BackColor       =   &H00CACD47&
-      Caption         =   "Start"
-      Height          =   255
-      Index           =   3
-      Left            =   4440
-      TabIndex        =   3
-      Top             =   900
-      Width           =   1095
-   End
-   Begin VB.CheckBox BCheck 
-      BackColor       =   &H00CACD47&
-      Caption         =   "R3"
-      Height          =   255
-      Index           =   2
-      Left            =   3120
-      TabIndex        =   2
-      Top             =   900
+      Top             =   960
       Width           =   1095
    End
    Begin VB.CheckBox BCheck 
       BackColor       =   &H00E7EC51&
+      Caption         =   "Start"
+      Height          =   255
+      Index           =   3
+      Left            =   3120
+      TabIndex        =   3
+      Top             =   480
+      Width           =   1095
+   End
+   Begin VB.CheckBox BCheck 
+      BackColor       =   &H00A8A13C&
+      Caption         =   "R3"
+      Height          =   255
+      Index           =   2
+      Left            =   4440
+      TabIndex        =   2
+      Top             =   1920
+      Width           =   1095
+   End
+   Begin VB.CheckBox BCheck 
+      BackColor       =   &H00A8A13C&
       Caption         =   "L3"
       Height          =   255
       Index           =   1
-      Left            =   4440
+      Left            =   3120
       TabIndex        =   1
-      Top             =   450
+      Top             =   1920
       Width           =   1095
    End
    Begin VB.CheckBox BCheck 
@@ -245,9 +245,9 @@ Begin VB.Form JokerIt
       Caption         =   "Select"
       Height          =   255
       Index           =   0
-      Left            =   3150
+      Left            =   4440
       TabIndex        =   0
-      Top             =   450
+      Top             =   480
       Width           =   1095
    End
    Begin VB.Label Label2 
@@ -262,7 +262,7 @@ Begin VB.Form JokerIt
    Begin VB.Label JokLab 
       Alignment       =   2  'Center
       BackStyle       =   0  'Transparent
-      Caption         =   "Joker It"
+      Caption         =   "Joker That"
       BeginProperty Font 
          Name            =   "Arial Black"
          Size            =   15.75
@@ -274,10 +274,10 @@ Begin VB.Form JokerIt
       EndProperty
       ForeColor       =   &H00C0C000&
       Height          =   495
-      Left            =   840
+      Left            =   600
       TabIndex        =   28
       Top             =   5280
-      Width           =   1335
+      Width           =   1935
    End
    Begin VB.Label InsLab 
       Alignment       =   2  'Center
@@ -343,17 +343,17 @@ Begin VB.Form JokerIt
    End
    Begin VB.Label Label1 
       BackStyle       =   0  'Transparent
-      Caption         =   "Based off of Joker It by Rathlar"
+      Caption         =   "Based off of Joker It! by Rathlar"
       ForeColor       =   &H00FFFF00&
       Height          =   255
       Index           =   0
-      Left            =   3240
+      Left            =   3120
       TabIndex        =   16
-      Top             =   5520
+      Top             =   5400
       Width           =   2295
    End
 End
-Attribute VB_Name = "JokerIt"
+Attribute VB_Name = "JokerThat"
 Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
@@ -450,14 +450,14 @@ If Size > 1 And Len(JAddr.Text) = 8 Then
     Addr = bE & Pad(temp2, 4) & Pad(Dec2Bin(Trim(Str(Size))), 8)
     Addr = Hex(Bin2Dec(Left(Addr, 16))) & Right(JokVal, 4)
     Val = Pad(temp3, 4) & temp1
-    Val = Hex(Bin2Dec(Left(Val, 16))) & Hex(Bin2Dec(Right(Val, 16)))
-ElseIf Size = 1 Then
+    Val = Pad(Hex(Bin2Dec(Left(Val, 16))), 4) & Pad(Hex(Bin2Dec(Right(Val, 16))), 4)
+ElseIf Size = 1 And Len(JAddr.Text) = 8 Then
     temp1 = Pad(Right(Hex2Bin(Right(JAddr.Text, 7)), 25), 28)
     temp2 = Trim(Str(Width))
     temp3 = Pad(Dec2Bin(Trim(Str(CompType))), 3)
     
     Addr = bD & temp1
-    Addr = Hex(Bin2Dec(Left(Addr, 16))) & Hex(Bin2Dec(Right(Addr, 16)))
+    Addr = Pad(Hex(Bin2Dec(Left(Addr, 16))), 4) & Pad(Hex(Bin2Dec(Right(Addr, 16))), 4)
     Val = "00000000" & Pad(temp3, 4) & Pad(temp2, 4)
     Val = Hex(BinToDec(Left(Val, 16))) & Right(JokVal, 4)
 Else

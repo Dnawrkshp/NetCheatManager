@@ -1,0 +1,14 @@
+The PC side of NetCheat.
+
+Contains:
+	Joker That written by Dnawrkshp - based off of Joker It! by Rathlar
+	CBUtil written by ORCXodus - cb2util written by misfire
+
+Credits:
+	ORCXodus:
+		GUI, CBUtil, math functions
+		
+	Dnawrkshp:
+		Net functions, Joker That
+
+Written in Visual Basic 6.

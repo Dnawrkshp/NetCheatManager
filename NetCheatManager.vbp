@@ -1,7 +1,7 @@
 Type=Exe
 Object={248DD890-BB45-11CF-9ABC-0080C7E7B78D}#1.0#0; Mswinsck.ocx
 Form=Forms\Main.frm
-Form=Forms\JokerIt.frm
+Form=Forms\JokerThat.frm
 Object={3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0; richtx32.ocx
 Form=Forms\cbcUtil.frm
 Module=FileIO; Modules\FileIO.bas
