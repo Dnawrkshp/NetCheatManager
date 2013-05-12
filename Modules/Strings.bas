@@ -85,9 +85,11 @@ Function ParseCodes(Codes As String)
     ParseCodes = Replace(Replace(Codes, " ", ""), vbCrLf, "")
 End Function
 
-Function RemoveComments(Text As String)
+Function RemoveComments(text As String)
     Dim temp As String, X As Long, Y As Long
-    temp = Text
+    text = ParseLabels(text)
+    temp = text
+    
     X = 1
     Do While X > 0 And X <= Len(temp)
         X = InStr(temp, "//")
@@ -144,4 +146,36 @@ Function FindMC(Code As String)
     Next X
     
     FindMC = Code
+End Function
+
+Function ParseLabels(text As String)
+    
+    Dim codel() As String
+    codel = Split(text, vbCrLf)
+    
+    For X = 0 To UBound(codel)
+        'CHECK LENGTH
+        If Len(codel(X)) <> 17 Then GoTo NOTACODE
+        
+        'CHECK FOR SPACE
+        If Mid(codel(X), 9, 1) <> " " Then GoTo NOTACODE
+        
+        'CHECK CHARACTERS
+        Select Case Left(codel(X), 1)
+            Case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"
+                'SendButt.CodeWindow.text = SendButt.CodeWindow.text + codel(X) & vbCrLf
+                ParseLabels = ParseLabels & codel(X) & vbCrLf
+                
+            Case Else: GoTo NOTACODE
+            
+        End Select
+        GoTo NXT
+        
+NOTACODE:
+        'SendButt.CodeWindow.text = SendButt.CodeWindow.text + "//" & codel(X) & vbCrLf
+        'ParseLabels = ParseLabels & "//" & codel(X) & vbCrLf
+        
+NXT:
+    Next X
+    
 End Function

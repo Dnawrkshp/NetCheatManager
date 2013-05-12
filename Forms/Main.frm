@@ -329,11 +329,6 @@ Private Sub Form_MouseMove(Button As Integer, Shift As Integer, X As Single, Y A
     StopDisc.ForeColor = &HC0C000
 End Sub
 
-Private Sub Form_Terminate()
-If WSock1.State = 7 Then: Send "1"
-WSock1.Close
-End Sub
-
 Private Sub JokerTB_Click()
     JokerThat.Show
 End Sub

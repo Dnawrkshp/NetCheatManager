@@ -99,6 +99,7 @@ Begin VB.Form cbcUtil
       _ExtentY        =   10054
       _Version        =   393217
       BackColor       =   0
+      Enabled         =   -1  'True
       ScrollBars      =   2
       TextRTF         =   $"cbcUtil.frx":A514A
    End
@@ -133,48 +134,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Private Sub Command_Click()
-
-Dim grab
-grab = cbcbox.Text
-Dim codel() As String
-codel = Split(grab, vbCrLf)
-
-For X = 0 To UBound(codel)
-
-    'CHECK LENGTH
-    If Len(codel(X)) <> 17 Then GoTo NOTACODE
-    
-    'CHECK FOR SPACE
-    If Mid(codel(X), 9, 1) <> " " Then GoTo NOTACODE
-    
-    
-    
-    'CHECK CHARACTERS
-    Select Case Left(codel(X), 1)
-        Case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E"
-            SendButt.CodeWindow.Text = SendButt.CodeWindow.Text + codel(X) & vbCrLf
-            
-        Case Else: GoTo NOTACODE
-        
-    End Select
-    GoTo NXT
-    
-NOTACODE:
-    SendButt.CodeWindow.Text = SendButt.CodeWindow.Text + "//" & codel(X) & vbCrLf
-    
-    
-    
-    
-    
-NXT:
-    Next X
-    
-
-
-
-
-
-
+    SendButt.CodeWindow.text = SendButt.CodeWindow.text & vbCrLf & cbcbox.text
 End Sub
 
 Private Sub Command1_Click()
@@ -189,7 +149,7 @@ Dim plug As String
 Dim p1, p2
 'MsgBox CurDir
 
-cbcbox.Text = ""
+cbcbox.text = ""
 plug = "cb2util "
 inputfile = File1.filename
 If InStr(1, inputfile, " ") <> 0 Then MsgBox "Cbc file name must not containt spaces. Rename file and try again": Exit Sub
@@ -255,7 +215,7 @@ End Sub
 Private Sub File2_Click()
     cbcbox.LoadFile File2.filename
     cbcbox.SelStart = 0
-    cbcbox.SelLength = Len(cbcbox.Text)
+    cbcbox.SelLength = Len(cbcbox.text)
     cbcbox.SelColor = &HE7EC51
 End Sub
 
@@ -265,6 +225,6 @@ File1.Pattern = "*.cbc"
 File2.Path = App.Path
 File2.Pattern = "*.txt"
 cbcbox.SelStart = 0
-cbcbox.SelLength = Len(cbcbox.Text)
+cbcbox.SelLength = Len(cbcbox.text)
 cbcbox.SelColor = &HE7EC51
 End Sub
